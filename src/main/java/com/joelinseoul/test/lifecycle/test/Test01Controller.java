@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/RestController/test01")
+@RequestMapping("/lifecycle/test01")
 @RestController // @Controller + @ResponseBody
 public class Test01Controller {
 

@@ -50,6 +50,45 @@
 		)
 
 	</insert>
+	
+		<insert id="InsertRealestateByObject" parameterType="com.joelinseoul.test.mybatis.test01.domain.Realestate">
+	
+	INSERT INTO
+		`real_estate`
+		(`realtorId`,`address`,`area`,`type`,`price`)
+	VALUE
+		(
+		#{realtorId}
+		,#{address}
+		,#{area}
+		,#{type}
+		,#{price}
+		)
 
+	</insert>
 
+	<update id="updateRealesatate" parameterType="map">
+	
+		UPDATE `real_estate`
+		SET `type` = #{type}, `price`=#{price}
+		WHERE `id`=#{id}
+
+	</update>
+
+	<delete id="deleteRealestate" parameterType="map">
+		DELETE FROM `real_estate`
+		WHERE `id`=#{id};
+	</delete>
+	
+	<select id="selectAddressById"  resultType="java.lang.String" parameterType="int">
+		SELECT
+	 		`address`
+	 		
+	 	FROM
+	 		`real_estate`
+	 		
+	 	WHERE
+	 		`id` = #{id}
+	</select>
+	
  </mapper>

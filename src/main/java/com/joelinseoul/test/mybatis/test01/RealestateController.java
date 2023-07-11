@@ -47,4 +47,34 @@ public class RealestateController {
 		return count + "건의 매물이 성공적으로 등록되었어요! (등록된 매물 주소 : " + address +")";
 	}
 	
+	@RequestMapping("/addbyobject")
+	@ResponseBody
+	public String addRealestateByObject(@RequestParam("realtorId")int realtorId, @RequestParam("address")String address, @RequestParam("area")double area , @RequestParam("type")String type, @RequestParam("price")int price) {
+		Realestate realestate = new Realestate();
+		realestate.setRealtorId(realtorId);
+		realestate.setAddress(address);
+		realestate.setArea(area);
+		realestate.setType(type);
+		realestate.setPrice(price);
+		
+		int count = realestateService.addRealestateByObject(realestate) ; 
+		return count + "건의 매물이 성공적으로 등록되었어요! (등록된 매물 주소 : " + realestate.getAddress() +")";
+	}
+	
+	@RequestMapping("/edit")
+	@ResponseBody
+	public String editRealestate(@RequestParam("id")int id, @RequestParam("type")String type, @RequestParam("price")int price) {
+		String targetEditAddress = realestateService.getAddressById(id);
+		int count = realestateService.updateRealestate(id, type, price);
+		return targetEditAddress + " 의 매물, " + count + "건이 수정되었어요.";
+	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public String deleteRealestate(@RequestParam("id")int id) {
+		String targetEditAddress = realestateService.getAddressById(id);
+		int count = realestateService.deleteRealestate(id);
+		return targetEditAddress + " 의 매물, " + count + "건이 삭제되었어요.";
+	}
+	
 }

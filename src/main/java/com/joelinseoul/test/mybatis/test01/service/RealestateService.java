@@ -20,6 +20,10 @@ public class RealestateService {
 		return realestate;
 	}
 	
+	public String getAddressById(int id) {
+		String address = realestateRepository.selectAddressById(id);
+		return address;
+	}
 	
 	
 	//전달된 면적 가격 정보를 기반으로 매물 행 조회  getRealestateDouble
@@ -32,5 +36,20 @@ public class RealestateService {
 		int count = realestateRepository.insertRealestate(realtorId, address, area, type, price);
 		return count;
 	}
+	
+	public int addRealestateByObject(Realestate realestate) {
+		int count = realestateRepository.InsertRealestateByObject(realestate);
+		return count;
+	}
 
+	public int updateRealestate(int id, String type, int price) {
+		int count = realestateRepository.updateRealesatate(id,type,price);
+		return count;
+	}
+	
+	public int deleteRealestate(int id) {
+		int count = realestateRepository.deleteRealestate(id);
+		return count;
+	}
+	
 }

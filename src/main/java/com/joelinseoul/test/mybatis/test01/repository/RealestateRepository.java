@@ -21,4 +21,12 @@ public interface RealestateRepository {
 			,@Param("type")String type
 			,@Param("price")int price
 			);
+	
+	public int InsertRealestateByObject(Realestate realesate);
+	
+	public int updateRealesatate(@Param("id")int id, @Param("type")String type, @Param("price")int price);
+	
+	public int deleteRealestate(@Param("id")int id);
+	
+	public String selectAddressById(@Param("id") int id);
 }

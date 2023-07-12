@@ -1,5 +1,8 @@
 package com.joelinseoul.test.jsp.test01;
 
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.joelinseoul.test.jsp.test01.domain.Seller;
 import com.joelinseoul.test.jsp.test01.service.SellerService;
 
 @RequestMapping("/seller")
@@ -36,5 +40,26 @@ public class SellerController {
 	    model.addAttribute("temperature", temperature);
 		return "jsp/insertSellerResult";
 	}
+	
+	//최근 판매자 정보 출력 컨트롤러
+	@GetMapping("/info")
+	public String sellerInfo(@RequestParam("id") Optional <Integer> id, Model model) {
+		
+		Seller seller = new Seller();
+		
+		if(id.isPresent()) {
+			int idForSearch = id.get();
+			seller = sellerService.getInfoById(idForSearch);
+		} else {
+			seller = sellerService.getInfo();
+		}	
+		
+		model.addAttribute("nickname", seller.getNickname());
+		model.addAttribute("profileImage", seller.getProfileImage());
+		model.addAttribute("temperature", seller.getTemperature());
+		return "jsp/sellerInfo";
+	}
+	
+	
 		
 }

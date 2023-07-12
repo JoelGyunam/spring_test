@@ -13,4 +13,24 @@
 
  	</insert>
  
+ 	<select id="getInfo" resultType="com.joelinseoul.test.jsp.test01.domain.Seller">
+ 		SELECT
+ 		`nickname`,`profileImage`,`temperature`
+ 		FROM
+ 		`seller`
+ 		ORDER BY `id` DESC
+ 		LIMIT 1
+ 	</select>
+ 	
+ 	 <select id="getInfoById" resultType="com.joelinseoul.test.jsp.test01.domain.Seller" parameterType="int">
+ 		SELECT
+ 		`nickname`,`profileImage`,`temperature`
+ 		FROM
+ 		`seller`
+ 		WHERE
+ 		`id` = #{id}
+ 		ORDER BY `id` DESC
+ 		LIMIT 1
+ 	</select>
+ 
  </mapper>

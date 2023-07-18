@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+ <mapper namespace="com.joelinseoul.test.jstl.pastweather.repository.PastWeatherRepository">
+ 
+ 	<select id="selectPast" resultType="com.joelinseoul.test.jstl.pastweather.domain.PastWeather">
+ 	
+ 	SELECT 
+ 		`id`,`date`,`weather`,`temperatures`,`precipation`,`microDust`,`windSpeed`,`createdAt`,`updatedAt`
+ 	FROM
+ 		`weatherhistory`
+ 	</select>
+ 
+ 	<insert id="insertWeather" parameterType="map">
+ 	
+ 		INSERT INTO `weatherhistory` (`date`,`weather`,`microDust`,`temperatures`,`precipation`,`windSpeed`)
+   		VALUE (#{date}, #{weather}, #{microDust}, #{temperatures},#{precipation},#{windSpeed});
+ 	
+ 	</insert>
+ 
+ </mapper>
+ 
+ 
+ 
+ 

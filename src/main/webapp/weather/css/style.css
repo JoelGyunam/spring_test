@@ -2,6 +2,34 @@
 
 #wrap {
 	height: 800px;
-	width: 1200px;
 }
 
+#navbar {
+	width:180px;
+	background-color: #7095E6;
+}
+
+#main-logo{
+	height : 100px;
+	width : 180px;
+}
+
+.fs-small{
+	font-size: 4p;
+}
+
+
+footer{
+	height : 70px;
+	border-top-width: thick;
+	border-top-color:rgb(0, 0, 0) 
+}
+
+#footer-logo{
+	height : 70px;
+	width : 180px;
+}
+
+#footer-text{
+	color: #6E757C;
+}

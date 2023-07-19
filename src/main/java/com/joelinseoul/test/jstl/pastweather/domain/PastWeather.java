@@ -2,9 +2,12 @@ package com.joelinseoul.test.jstl.pastweather.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PastWeather {
 
 	private int id;
+	@DateTimeFormat(pattern="MM/dd/yyyy")
 	private Date date;
 	private String weather;
 	private double temperatures;

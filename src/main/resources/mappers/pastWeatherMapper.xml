@@ -22,6 +22,13 @@
  	
  	</insert>
  
+ 	<insert id="insertWeatehrByObject" parameterType="com.joelinseoul.test.jstl.pastweather.domain.PastWeather">
+ 	
+ 		INSERT INTO `weatherhistory` (`date`,`weather`,`microDust`,`temperatures`,`precipation`,`windSpeed`)
+   		VALUE (#{date}, #{weather}, #{microDust}, #{temperatures},#{precipation},#{windSpeed});
+ 	
+ 	</insert>
+ 
  </mapper>
  
  

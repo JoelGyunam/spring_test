@@ -21,4 +21,6 @@ public interface PastWeatherRepository {
 			,@Param("precipation") double precipation
 			,@Param("windSpeed") double windSpeed
 			);
+	
+	public int insertWeatehrByObject(PastWeather pastWeather);
 }

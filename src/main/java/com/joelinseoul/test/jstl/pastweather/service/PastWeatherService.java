@@ -25,4 +25,9 @@ public class PastWeatherService {
 		return insertWeather;
 	}
 	
+	public int insertWeatherByObject(PastWeather pastWeather) {
+		int insertWeatherByObject = pastWeatherRepository.insertWeatehrByObject(pastWeather);
+		return insertWeatherByObject;
+	}
+	
 }

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+#wrap {
+	width : 400px;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+header{
+	background-color: #2AC1BC;
+	height : 50px;
+	color : whitesmoke
+}
+
+.baemin-border{
+	border:1px solid;
+	border-color: #2AC1BC;
+	border-radius: 5px;
+}
+
+#menu-small-box{
+	height: 25px;
+	background-color: rgb(209, 209, 209);
+	border-radius: 5px;
+	color: #767676;
+	display: inline-block;
+	min-width: 20px;
+}
+
+.text-gray{
+	color : #767676;
+}
+
+.text-small{
+	font-size: 12px;
+}

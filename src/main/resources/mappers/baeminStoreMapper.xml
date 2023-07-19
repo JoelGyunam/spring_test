@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.joelinseoul.test.jstl.baemin.repository.BaeminReviewRepository">
+
+	<select id="selectStoreList" resultType="com.joelinseoul.test.jstl.baemin.domain.BaeminReview">
+	
+		SELECT
+			`id`
+			,`name`
+			,`phoneNumber`
+			,`address`
+			,`businessNumber`
+			,`introduce`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`store`
+
+	</select>
+
+
+	<select id="selectReviewByStoreId" resultType="com.joelinseoul.test.jstl.baemin.domain.BaeminUserReview">
+	
+	    SELECT a.userName, a.point, a.createdAt, a.review, a.menu, b.name
+	    FROM  `new_review` AS a
+	    JOIN `store` AS b
+	    ON a.storeId = b.id
+	    WHERE a.storeId= #{storeId}
+	    ORDER BY `createdAt` DESC;	
+	</select>
+
+
+
+	<select id="selectStore" resultType="com.joelinseoul.test.jstl.baemin.domain.BaeminReview" parameterType="int">
+	
+		SELECT
+			`id`
+			,`name`
+			,`phoneNumber`
+			,`address`
+			,`businessNumber`
+			,`introduce`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`store`
+		WHERE `id` = #{storeId}
+
+	</select>
+
+</mapper>

@@ -7,14 +7,14 @@
  
  <mapper namespace="com.joelinseoul.test.ajax.bookmark.repository.BookmarkRepository">
  
- 		<insert id="insertBookmark" parameterType="map">
- 			INSERT INTO 
- 				`bookmarks`(`name`,`url`)
-			VALUE (
-				#{name}
-				,#{url}
-			)
- 		</insert>
+	<insert id="insertBookmark" parameterType="map">
+		INSERT INTO 
+			`bookmarks`(`name`,`url`)
+		VALUE (
+			#{name}
+			,#{url}
+		)
+	</insert>
  
  	<select id="selectBookmark" resultType="com.joelinseoul.test.ajax.bookmark.domain.Bookmark">
  		SELECT
@@ -22,4 +22,18 @@
  		FROM `bookmarks`
  	</select>
  
+ 	<select id="urlDupCheck" parameterType="String" resultType="int">
+ 		SELECT
+ 			count(1)
+ 		FROM `bookmarks`
+ 		WHERE `url`=#{url}
+ 	</select>
+ 	
+ 	<delete id="deleteBookmarkById" parameterType="int">
+ 		DELETE from `bookmarks`
+		WHERE `id` = #{id};
+ 	</delete>
+ 	
+ 	
+ 	
  </mapper>

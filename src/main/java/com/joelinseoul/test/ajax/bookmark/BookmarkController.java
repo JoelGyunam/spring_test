@@ -51,4 +51,32 @@ public class BookmarkController {
 		
 		return "ajax/bookmark/bookmarkList";
 	};
+	
+	@GetMapping("/url_dup_check")
+	@ResponseBody
+	public Map<String,String> urlDupCheck(@RequestParam("url") String url) {
+		int count = bookmarkService.urlDupCheck(url);
+		
+		Map<String,String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "true");
+		} else resultMap.put("result", "false");
+		
+		return resultMap;
+	}
+	
+	@GetMapping("delete_id")
+	@ResponseBody
+	public Map<String, String> deleteBookmarkById(@RequestParam("id") int id){
+		int count = bookmarkService.deleteBookmarkById(id);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result","success");
+		} else resultMap.put("result", "fail");
+		
+		return resultMap;
+	}
 }

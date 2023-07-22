@@ -31,6 +31,7 @@
 					<td>${getBookmarkLine.id }</td>
 					<td>${getBookmarkLine.name }</td>
 					<td>${getBookmarkLine.url }</td>
+					<td><button id="bookmark_del" class="btn-danger text-white form-control delete-btn" value="${getBookmarkLine.id }">삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -38,5 +39,37 @@
 	</div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function(){
+		
+		$(".delete-btn").on("click",function(){
+			let getId = $(this).attr("value");
+		
+		$.ajax({
+			type:"get"
+			,url:"/bookmark/delete_id"
+			,data:{"id":getId}
+			,success:function(data){
+				if(data.result==="success"){
+					alert("성공적으로 삭제됬습니다.");
+					document.location.reload();
+				} else{
+					alert("삭제에 실패했습니다.")
+				}
+			}
+			,error:function(){
+				alert("실패했습니다.")
+			}
+			
+			
+		})
+		
+		})
+
+	});
+
+
+</script>
 </body>
 </html>

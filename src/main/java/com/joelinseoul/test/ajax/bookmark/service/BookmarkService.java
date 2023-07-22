@@ -24,4 +24,14 @@ public class BookmarkService {
 		List<Bookmark> getBookmark = bookmarkRepository.selectBookmark();
 		return getBookmark;
 	}
+	
+	public int urlDupCheck(String url) {
+		int urlDupCheck = bookmarkRepository.urlDupCheck(url);
+		return urlDupCheck;
+	};
+	
+	public int deleteBookmarkById(int id) {
+		int deleteBookmarkById = bookmarkRepository.deleteBookmarkById(id);
+		return deleteBookmarkById;
+	}
 }

@@ -54,14 +54,17 @@ public class BookmarkController {
 	
 	@GetMapping("/url_dup_check")
 	@ResponseBody
-	public Map<String,String> urlDupCheck(@RequestParam("url") String url) {
-		int count = bookmarkService.urlDupCheck(url);
+	public Map<String,Boolean> urlDupCheck(@RequestParam("url") String url) {
 		
-		Map<String,String> resultMap = new HashMap<>();
+		Map<String,Boolean> resultMap = new HashMap<>();
 		
-		if(count == 1) {
-			resultMap.put("result", "true");
-		} else resultMap.put("result", "false");
+//		if(bookmarkService.urlDupCheck(url)) {
+//			resultMap.put("urlDupCheck", true);
+//		} else {
+//			resultMap.put("urlDupCheck", false);
+//		}
+		
+		resultMap.put("urlDupCheck", bookmarkService.urlDupCheck(url));
 		
 		return resultMap;
 	}

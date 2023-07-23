@@ -24,7 +24,7 @@
 				<label>URL</label> 
 					<div class="d-flex">
 						<input type="text" id="url" class="form-control">
-						<button type="button" id="urlDupCheck" class="form-control btn btn-primary">중복 확인</button>
+						<button type="button" id="urlDupCheckBtn" class="btn btn-primary col-2">중복 확인</button>
 					</div>
 					<div id="dupInfoNeeded" class = "text-primary d-none">URL 입력 후, 중복 확인을 해주세요.</div>
 					<div id="dupInfoFail" class = "text-danger d-none">중복된 URL 입니다.</div>
@@ -45,12 +45,12 @@
 			
 			$("#url").keyup(function(){
 				urlDupChecked = false;
-				$("#dupInfoSuccess").attr("class","text-success d-none" );
-				$("#dupInfoNeeded").attr("class", "text-primary d-none");
-				$("#dupInfoNeeded").attr("class", "text-primary");
+				$("#dupInfoSuccess").addClass("d-none");
+				$("#dupInfoFail").addClass("d-none");
+				$("#dupInfoNeeded").removeClass("d-none");
 			})
 			
-			$("#urlDupCheck").on("click",function(){
+			$("#urlDupCheckBtn").on("click",function(){
 				
 				let url = $("#url").val();
 				if(url == ""){
@@ -66,17 +66,17 @@
 					,url:"/bookmark/url_dup_check"
 					,data:{"url":url}
 					,success:function(data){
-						if(data.result==="true"){
+						if(data.urlDupCheck){
 							urlDupChecked = false;
-							$("#dupInfoFail").attr("class","text-danger" )
-							$("#dupInfoSuccess").attr("class","text-success d-none" )
-							$("#dupInfoNeeded").attr("class", "text-primary d-none")
+							$("#dupInfoFail").removeClass("d-none" )
+							$("#dupInfoSuccess").addClass("d-none" )
+							$("#dupInfoNeeded").addClass("d-none" )
 
-						} else if(data.result==="false"){
+						} else {
 							urlDupChecked = true;
-							$("#dupInfoSuccess").attr("class","text-success" )
-							$("#dupInfoFail").attr("class","text-danger d-none" )
-							$("#dupInfoNeeded").attr("class", "text-primary d-none")
+							$("#dupInfoSuccess").removeClass("d-none" )
+							$("#dupInfoFail").addClass("d-none" )
+							$("#dupInfoNeeded").addClass("d-none" )
 						}
 					}
 					,error:function(){

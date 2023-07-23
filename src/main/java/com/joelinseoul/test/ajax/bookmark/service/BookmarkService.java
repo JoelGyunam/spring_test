@@ -25,9 +25,17 @@ public class BookmarkService {
 		return getBookmark;
 	}
 	
-	public int urlDupCheck(String url) {
-		int urlDupCheck = bookmarkRepository.urlDupCheck(url);
-		return urlDupCheck;
+	public boolean urlDupCheck(String url) {
+		int count = bookmarkRepository.urlDupCheck(url);
+		
+//		if(urlDupCheck == 0) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+		
+		return count != 0;
+		
 	};
 	
 	public int deleteBookmarkById(int id) {

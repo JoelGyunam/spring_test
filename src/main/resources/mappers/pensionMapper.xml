@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "com.joelinseoul.test.ajax.pension.repository.PensionRepository">
+	
+	<select id ="selectReservationList" resultType = "com.joelinseoul.test.ajax.pension.domain.Pension" >
+		SELECT
+			`id`,`name`,`date`,`day`,`headcount`,`state`,`phoneNumber`
+		FROM `booking`
+		ORDER BY `id` DESC;
+	
+	</select>
+
+	<delete id = "deleteReservation" parameterType = "int">
+		DELETE FROM
+			`booking`
+		WHERE `id` = #{id}
+	
+	</delete>
+
+	<insert id = "insertReservation" parameterType = "map">
+		INSERT INTO
+			`booking`
+			(`name`,`date`,`day`,`headcount`,`phoneNumber`)
+		VALUE (
+			#{name}
+			,#{date}
+			,#{day}
+			,#{headcount}
+			,#{phoneNumber}
+		)
+	</insert>
+
+	<select id = "selectByNameAndPhoneNumber" parameterType="map" resultType="com.joelinseoul.test.ajax.pension.domain.Pension">
+		SELECT
+			`name`,`date`,`day`,`headcount`,`state`
+		FROM `booking`
+		WHERE `name` = #{name} AND `phoneNumber` = #{phoneNumber}
+		LIMIT 1;
+	</select>
+</mapper>

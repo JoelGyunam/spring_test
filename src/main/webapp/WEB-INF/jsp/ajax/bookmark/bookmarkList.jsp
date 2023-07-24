@@ -31,7 +31,7 @@
 					<td>${getBookmarkLine.id }</td>
 					<td>${getBookmarkLine.name }</td>
 					<td>${getBookmarkLine.url }</td>
-					<td><button id="bookmark_del" class="btn-danger text-white form-control delete-btn" value="${getBookmarkLine.id }">삭제</button></td>
+					<td><button id="bookmark_del" class="btn-danger text-white form-control delete-btn" data-bookmark-id="${getBookmarkLine.id }">삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -44,7 +44,7 @@
 	$(document).ready(function(){
 		
 		$(".delete-btn").on("click",function(){
-			let getId = $(this).attr("value");
+			let getId = $(this).data("bookmark-id");
 		
 		$.ajax({
 			type:"get"

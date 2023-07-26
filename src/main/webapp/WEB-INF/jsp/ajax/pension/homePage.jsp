@@ -94,12 +94,12 @@
         			,url:"/pension/reservation/search"
         			,data:{"name":name,"ph":phoneNumber}
         			,success:function(data){
-        				if(data[0].result === 1){
-        					let name = data[1].name;
-        					let date = data[1].date;
-        					let day = data[1].day;
-        					let headcount = data[1].headCount;
-        					let state = data[1].state;
+        				if(data.result === "success"){
+        					let name = data.info.name;
+        					let date = data.info.date;
+        					let day = data.info.day;
+        					let headcount = data.info.headcount;
+        					let state = data.info.state;
         					alert(
         							"이름 : " + name + "\n"
         							+ "날짜 : " + dateFormat(date) + "\n"		

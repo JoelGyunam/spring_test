@@ -78,7 +78,7 @@ public class PensionController {
 
 	@GetMapping("/reservation/search")
 	@ResponseBody
-	public List<Map<String,Object>> getReservationInfoByNameAndPhoneNumber(
+	public Map<String,Object> getReservationInfoByNameAndPhoneNumber(
 			@RequestParam("name") String name
 			,@RequestParam("ph") String phoneNumber
 			) {
@@ -88,20 +88,13 @@ public class PensionController {
 		Map<String, Object> infoMap = new HashMap<>();
 		
 		if(getInfo == null) {
-			infoMap.put("result",0);
+			infoMap.put("result","fail");
 			infoList.add(infoMap);
-			return infoList;
+			return infoMap;
 		} else {
-			infoMap.put("result",1);
-			infoList.add(infoMap);
-			infoMap = new HashMap<>();
-			infoMap.put("name", getInfo.getName());
-			infoMap.put("date",getInfo.getDate());
-			infoMap.put("day",getInfo.getDay());
-			infoMap.put("headCount",getInfo.getHeadcount());
-			infoMap.put("state",getInfo.getState());
-			infoList.add(infoMap);
-			return infoList;
+			infoMap.put("result","success");
+			infoMap.put("info",getInfo);
+			return infoMap;
 		}
 	}
 

@@ -62,7 +62,7 @@ public class CompanyController {
 	@ResponseBody
 	public Company editCompanyInfo() {
 		
-		int id = 112;
+		int id = 7;
 		String scale = "중소기업";
 		int headcount = 34;
 		
